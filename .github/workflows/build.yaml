@@ -17,6 +17,6 @@ jobs:
     - run: cd demo && flutter build ios --release --no-codesign
     - run: cd demo && flutter build macos
     - uses: actions/upload-artifact@v2
-        with:
-          name: bundle.zip
-          path: demo
+      with:
+        name: bundle.zip
+        path: demo
