@@ -23,8 +23,9 @@ jobs:
       with:
         flutter-version: '2.5.2'
     - run: flutter config --enable-macos-desktop
-    - run: cd .. && mv gh-actions-test gh_actions_test && cd gh_actions_test
-    - run: flutter create --platforms=macos .
-    - run: flutter pub get
+    - run: flutter create demo
+    - run: ls -l
+    - run: cd demo
+    - run: ls -l
     - run: flutter build ios --release --no-codesign
     - run: flutter build macos
