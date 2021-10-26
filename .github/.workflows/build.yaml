@@ -1,0 +1,28 @@
+name: Build and Deploy
+
+on:
+  - push
+
+jobs:
+  linux_android_web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: mkdir dir
+      - run: echo "Hello World" > dir/test.txt
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: dir
+
+  apple:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: subosito/flutter-action@v1
+      with:
+        flutter-version: '2.5.2'
+    - run: flutter pub get
+    - run: flutter config --enable-macos-desktop
+    - run: flutter build ios --release --no-codesign
+    - run: flutter build macos
