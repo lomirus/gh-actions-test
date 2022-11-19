@@ -5,18 +5,12 @@ on:
 
 jobs:
   apple:
-    runs-on: macos-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: subosito/flutter-action@v1
-      with:
-        flutter-version: '2.5.2'
-    - run: flutter config --enable-macos-desktop
-    - run: flutter create demo
-    - run: cd demo && ls -l && pwd
-    - run: cd demo && flutter build ios --release --no-codesign
-    - run: cd demo && flutter build macos
+    - run: git clone https://github.com/bevyengine/bevy.git && cd bevy
+    - run: cargo build --release --example bevymark
     - uses: actions/upload-artifact@v2
       with:
-        name: bundle.zip
-        path: demo
+        name: bevymark
+        path: bevy/target/release/examples/bevymark
