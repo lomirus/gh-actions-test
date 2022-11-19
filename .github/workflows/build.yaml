@@ -4,12 +4,12 @@ on:
   - push
 
 jobs:
-  apple:
+  windows:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
-    - run: git clone https://github.com/bevyengine/bevy.git && cd bevy
-    - run: cargo build --release --example bevymark
+    - run: git clone https://github.com/bevyengine/bevy.git
+    - run: cd bevy && cargo build --release --example bevymark
     - uses: actions/upload-artifact@v2
       with:
         name: bevymark
