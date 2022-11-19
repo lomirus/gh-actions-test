@@ -10,8 +10,8 @@ jobs:
     - uses: actions/checkout@v2
     - run: rustup update
     - run: git clone https://github.com/gfx-rs/wgpu.git
-    - run: cd wgpu/wgpu && cargo build --release --example hello-windows
+    - run: cd wgpu/wgpu && cargo build --release --example cube
     - uses: actions/upload-artifact@v2
       with:
         name: wgpu
-        path: wgpu/wgpu/target/release/examples
+        path: wgpu/target/release/examples
