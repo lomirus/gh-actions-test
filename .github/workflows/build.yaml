@@ -9,9 +9,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: rustup update
-    - run: git clone https://github.com/bevyengine/bevy.git
-    - run: cd bevy && cargo build --release --example bevymark
+    - run: git clone https://github.com/gfx-rs/wgpu.git
+    - run: cd wgpu/wgpu && cargo build --release --example hello-windows
     - uses: actions/upload-artifact@v2
       with:
-        name: bevymark
-        path: bevy/target/release/examples
+        name: wgpu
+        path: wgpu/wgpu/target/release/examples
